@@ -9,9 +9,10 @@ MY_TELEGRAM_ID = myvar.MY_TELEGRAM_ID
 
 
 def main():
-
+    # simple startup title of the bot
     intro()
-    
+
+    # init variables
     bot = telepot.Bot(token)
     now = []
     prev = importCache()
@@ -28,9 +29,9 @@ def main():
         prev = now + prev
         if len(prev) > max_prev_cache:
             removeOlds(prev,max_prev_cache)
-        
+
         exportCache(prev)
-        
+
         time.sleep(refresh)
 
 def removeOlds(lista,maxsize):
@@ -52,7 +53,7 @@ def exportCache(lista):
             print(tmp,file = f)
         f.close()
     print("Cache exported.")
-    
+
 def importCache():
     filename = myvar.CACHE_FILE
     lista = list()
@@ -69,27 +70,3 @@ def intro():
     print("\n\t/\\/  LestoBot - Luca Scotton  \\/\\\n")
     print("\t     the all in none solution\n\n")
 main()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

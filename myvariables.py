@@ -1,8 +1,10 @@
 
 # GLOBAL VARIABLES FOR LestoBot - Luca Scotton
 
-TOKEN = "378634165:AAE9U8wOVL7I5UQk_SMUlwxn6xV7kRdhyuY"
-MY_TELEGRAM_ID = 30646137
+import private_info # python file where my private info are stored. It's not syncronized with online repository
+
+TOKEN = private_info.TOKEN # set your own Telegram Bot token
+MY_TELEGRAM_ID = private_info.MY_TELEGRAM_ID # set your own Telegram user ID
 REFRESH_TIME = 60       # expressed in seconds
 CACHED_ANNOUNCES = 40   # max annunci in cache
 CACHE_FILE = "cache.bin"

@@ -1,3 +1,7 @@
+# CUSTOM FILES
+private_info.py
+cache.bin
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
