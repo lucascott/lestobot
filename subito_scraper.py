@@ -29,14 +29,14 @@ def parsepage (url,stringa):
     raw_positions = tree.xpath('//div[@class="item_list_section item_description"]/span/span//text()')
     positions = list()
     found = list()
-    
+
     #Rimuovo spazi all'inizio e fine di ogni nome e rende tutto minuscolo
     items = [i.strip().lower() for i in items]
 
     for (i, p) in enumerate(raw_positions):
         if (i%2 is 0):
             positions.append(p+raw_positions[i+1])
-            
+
     for (i, item) in enumerate(items):
         if (item.find(stringa) is not -1):
             found.append((item,links[i],datetimes[i],positions[i]))
@@ -45,8 +45,16 @@ def parsepage (url,stringa):
 
 def getAnnounces():
     found = list()
-    for p in PAGES_LIST:
-        found += parsepage(p,LOOKUP_STR)
+    if connected_to_internet():
+        for p in PAGES_LIST:
+            found += parsepage(p,LOOKUP_STR)
     return found
 
+def connected_to_internet(url="http://www.google.com/"):
+    try:
+        requests.get(url)
+        return True
+    except requests.ConnectionError:
+        print("\nNo internet connection available.")
+    return False
 #main()
